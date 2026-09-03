@@ -1,0 +1,59 @@
+===== busy-poll=off run=1 =====
+seconds=1.485842
+messages_per_second=134603.77
+time_user=1.62
+time_system=1.15
+time_cpu=91%
+ctx_voluntary=33253
+ctx_involuntary=112
+max_rss_kib=5596
+
+===== busy-poll=on run=1 =====
+seconds=1.162941
+messages_per_second=171977.84
+time_user=2.39
+time_system=2.02
+time_cpu=146%
+ctx_voluntary=189
+ctx_involuntary=174
+max_rss_kib=5636
+
+===== busy-poll=on run=2 =====
+seconds=1.192239
+messages_per_second=167751.61
+time_user=2.61
+time_system=1.86
+time_cpu=147%
+ctx_voluntary=197
+ctx_involuntary=65
+max_rss_kib=5736
+
+===== busy-poll=off run=2 =====
+seconds=1.395591
+messages_per_second=143308.44
+time_user=1.52
+time_system=1.16
+time_cpu=88%
+ctx_voluntary=29326
+ctx_involuntary=104
+max_rss_kib=5624
+
+===== busy-poll=off run=3 =====
+seconds=1.535808
+messages_per_second=130224.58
+time_user=1.68
+time_system=1.20
+time_cpu=95%
+ctx_voluntary=33593
+ctx_involuntary=92
+max_rss_kib=5808
+
+===== busy-poll=on run=3 =====
+seconds=1.076484
+messages_per_second=185790.10
+time_user=2.45
+time_system=1.87
+time_cpu=143%
+ctx_voluntary=202
+ctx_involuntary=167
+max_rss_kib=5708

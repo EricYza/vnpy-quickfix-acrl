@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <link href="doxygen.css" rel="stylesheet" type="text/css">
+
+  <title>QuickFIX Dependencies</title>
+</head>
+
+<body>
+  <div class='header'>
+    <div class='headertitle'>
+      QuickFIX Dependencies
+    </div>
+  </div>
+
+  <div class='contents'>
+    <h1>Required Dependencies</h1>
+
+    <h2>Compiler Requirements</h2>
+    <p>QuickFIX requires a C++17 compatible compiler:</p>
+    <ul>
+      <li><b>GCC 7+</b> or later</li>
+      <li><b>Clang 5+</b> or later</li>
+      <li><b>MSVC 2017+</b> (Visual Studio 2017 or later)</li>
+    </ul>
+
+    <h2>Build Systems</h2>
+    <p>One of the following build systems is required:</p>
+    <ul>
+      <li><b>CMake 3.5+</b> (recommended for all platforms)</li>
+      <li><b>Autotools</b> (autoconf, automake, libtool) for Unix-like systems</li>
+    </ul>
+
+    <h2>Platform-Specific Dependencies</h2>
+
+    <table border="1" cellspacing="0" cellpadding="5" width="100%">
+      <tbody>
+        <tr bgcolor="#DDDDDD">
+          <th>Platform</th>
+          <th>Build Tools</th>
+          <th>Testing</th>
+        </tr>
+
+        <tr bgcolor="#FFFFFF">
+          <td align="center"><b>Windows</b></td>
+          <td>
+            <a href="https://visualstudio.microsoft.com/">Visual Studio 2017+</a><br>
+            <a href="https://cmake.org/">CMake 3.5+</a><br>
+          </td>
+          <td>
+            <a href="https://github.com/catchorg/Catch2">Catch2</a> (bundled)
+          </td>
+        </tr>
+
+        <tr>
+          <td align="center"><b>Linux</b></td>
+          <td>
+            GCC 7+ or Clang 5+<br>
+            <a href="https://cmake.org/">CMake 3.5+</a> or Autotools<br>
+            make<br>
+            Standard C++ library
+          </td>
+          <td>
+            <a href="https://github.com/catchorg/Catch2">Catch2</a> (bundled)
+          </td>
+        </tr>
+
+        <tr>
+          <td align="center"><b>macOS</b></td>
+          <td>
+            <a href="https://developer.apple.com/xcode/">Xcode Command Line Tools</a><br>
+            <a href="https://cmake.org/">CMake 3.5+</a> or Autotools<br>
+            Clang (included with Xcode)
+          </td>
+          <td>
+            <a href="https://github.com/catchorg/Catch2">Catch2</a> (bundled)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br/><hr/>
+    <h1>Optional Dependencies</h1>
+
+    <h2>SSL/TLS Support</h2>
+    <ul>
+      <li><a href="https://www.openssl.org/">OpenSSL</a> - For encrypted FIX connections</li>
+    </ul>
+
+    <h2>Database Message Stores</h2>
+    <ul>
+      <li><a href="https://www.mysql.com/">MySQL</a> - MySQL client library for MySQL message store</li>
+      <li><a href="https://www.postgresql.org/">PostgreSQL</a> - PostgreSQL client library for PostgreSQL message store</li>
+      <li><b>ODBC</b> - ODBC driver for database connectivity (replaces deprecated MSSQL support)</li>
+    </ul>
+
+    <h2>Language Bindings</h2>
+    <ul>
+      <li><a href="https://www.python.org/">Python 3</a> - For Python bindings (Python 2 no longer supported)</li>
+      <li><a href="https://www.ruby-lang.org/">Ruby</a> - For Ruby bindings</li>
+      <li><a href="http://www.swig.org/">SWIG</a> - Required only if regenerating language bindings</li>
+    </ul>
+
+    <h2>Documentation</h2>
+    <ul>
+      <li><a href="https://www.doxygen.nl/">Doxygen</a> - For generating API documentation</li>
+    </ul>
+
+    <h2>Embedded Libraries</h2>
+    <p>The following libraries are included with QuickFIX and do not need to be installed separately:</p>
+    <ul>
+      <li><b>pugixml</b> - XML parsing (embedded, replaces libxml2)</li>
+      <li><b>Catch2</b> - Unit testing framework (embedded)</li>
+      <li><b>double-conversion</b> - Fast double/string conversion (embedded)</li>
+    </ul>
+  </div>
+</body>
+</html>

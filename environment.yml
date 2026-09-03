@@ -1,0 +1,16 @@
+name: vnpyfix
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - cmake
+  - make
+  - cxx-compiler
+  - swig
+  - openssl
+  - numpy>=2.2.3
+  - pytorch>=2.0
+  - ta-lib>=0.6.4
+  - pytest
+

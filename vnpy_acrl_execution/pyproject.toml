@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vnpy-acrl-execution"
+version = "0.1.0"
+description = "AC inventory planning and RL tactical execution app for vn.py"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "torch>=2.0",
+    "vnpy",
+    "vnpy-quickfix-gateway",
+]
+
+[project.scripts]
+vnpy-acrl-trader = "vnpy_acrl_execution.run_trader:main"
+vnpy-acrl-logic-test = "vnpy_acrl_execution.logic_demo:main"
+vnpy-acrl-fix-smoke = "vnpy_acrl_execution.fix_smoke:main"
+
+[tool.setuptools.packages.find]
+include = ["vnpy_acrl_execution*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

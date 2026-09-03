@@ -1,0 +1,15 @@
+collection_date=2026-07-21
+environment=WSL2
+kernel=Linux 6.18.33.2-microsoft-standard-WSL2
+cpu=11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
+online_cpus=4
+build_dir=build-bench-baseline
+CMAKE_BUILD_TYPE=Release
+QUICKFIX_BUSY_POLL=OFF
+QUICKFIX_FIXED_LAYOUT_PARSER=OFF
+QUICKFIX_SIMD_FIELD_SCAN=OFF
+QUICKFIX_SIMD_PATTERN_SCAN=OFF
+QUICKFIX_SIMD_STREAM_PARSER=OFF
+fix_parse_benchmark_sha256=5246e2eefe63861c18a224a9843acaed02bb60bc182b194c446e7a4001dad2d1
+libquickfix_sha256=ee4c255426f4ddc7f53dd42072c8656ede6b84758b5ad6adec72e05365a94765
+note=The exact wall-clock collection time was not captured; the calendar date and binary identity are retained.

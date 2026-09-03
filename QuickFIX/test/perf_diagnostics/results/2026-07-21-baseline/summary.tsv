@@ -1,0 +1,13 @@
+scenario	validate	repetition	messages	seconds	time_user	time_system	ctx_voluntary	ctx_involuntary	cpuset
+quickfix-server	yes	1	200000	1.106935	1.55	0.86	1237	47	none
+quickfix-server	no	1	200000	1.553670	1.65	1.25	33313	133	none
+quickfix-server	no	2	200000	1.494999	1.55	1.24	31192	103	none
+quickfix-server	yes	2	200000	1.107027	1.59	0.80	1745	65	none
+quickfix-server	yes	3	200000	1.132630	1.72	0.75	1635	41	none
+quickfix-server	no	3	200000	1.527993	1.64	1.22	33028	83	none
+quickfix-server	yes	1	200000	1.169815	1.70	0.84	1967	55	1,2,3
+quickfix-server	no	1	200000	1.331510	1.44	1.19	20927	88	1,2,3
+raw-server	yes	1	200000	0.684231	3.18	2.51	251	17	none
+raw-server	no	1	200000	0.426353	2.72	2.83	217	12	none
+parse	yes	1	500000	0.602844	0.61	0.00	156	3	none
+parse	no	1	500000	0.451201	0.46	0.00	129	5	none

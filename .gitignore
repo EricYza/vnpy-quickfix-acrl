@@ -1,0 +1,53 @@
+# Python caches and packaging output
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.ipynb_checkpoints/
+**/*.py[cod]
+**/*.egg-info/
+**/build/
+**/dist/
+
+# QuickFIX build and runtime output
+QuickFIX/build*/
+QuickFIX/lib/
+QuickFIX/log/
+QuickFIX/store/
+QuickFIX/bin/log*/
+QuickFIX/bin/store*/
+QuickFIX/test/pt
+QuickFIX/test/at
+QuickFIX/test/ut
+QuickFIX/test/fix_parse_benchmark
+QuickFIX/bin/ordermatch
+QuickFIX/bin/executor
+QuickFIX/bin/tradeclient
+
+# Local vn.py/FIX runtime state
+**/.vntrader/
+vnpy_quickfix_gateway/runtime/
+vnpy_acrl_execution/runtime/
+
+# RL training output that is not required by the deployed policy
+rlte/runs/
+rlte/runs_*/
+rlte/tensorboard_logs/
+rlte/wandb/
+rlte/raw_rewards/
+
+# Native compiler output
+**/*.o
+**/*.a
+**/*.so
+**/*.so.*
+
+# Credentials and machine-local configuration
+.env
+.env.*
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+.vscode/
+

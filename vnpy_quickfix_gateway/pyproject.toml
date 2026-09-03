@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vnpy-quickfix-gateway"
+version = "0.1.0"
+description = "Custom QuickFIX gateway for vn.py"
+requires-python = ">=3.11"
+dependencies = [
+    "vnpy",
+]
+
+[tool.setuptools.packages.find]
+include = ["vnpy_quickfix_gateway*"]
+
+[project.scripts]
+vnpy-quickfix-trader = "vnpy_quickfix_gateway.run_trader:main"
+vnpy-quickfix-main-test = "vnpy_quickfix_gateway.test_main_engine:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
