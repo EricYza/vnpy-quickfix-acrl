@@ -1,13 +1,68 @@
 # vn.py + optimized QuickFIX + AC-RL execution
 
-This monorepo snapshot contains the complete source needed to reproduce the
-vn.py/QuickFIX integration and the AC inventory-planning plus multi-agent RL
-execution prototype. Generated binaries, FIX session state, logs, credentials,
-and training caches are intentionally excluded.
+## Project overview
 
-The project is a research and integration prototype. The bundled ordermatch
-market data is deterministic test data, and the RL policy has not been validated
-with historical market replay, a broker simulation environment, or live trading.
+This project builds an end-to-end algorithmic execution prototype on top of
+vn.py and a customized QuickFIX C++ engine. Its main goal is to execute a large
+sell parent order within a specified horizon while separating two decisions:
+
+- **Macro execution planning:** an Almgren-Chriss (AC) inventory curve determines
+  how quickly the parent inventory should be reduced over time.
+- **Micro execution tactics:** PPO agents decide how each 20-lot tranche should
+  be distributed among an immediately marketable order, five passive price
+  levels, and inactive inventory.
+
+A central coordinator allows multiple agents to operate concurrently without
+letting them send orders independently. It reconciles desired allocations with
+live child orders, tracks fills and pending cancellations, enforces parent/tranche
+volume limits, and applies deadline fallback. The resulting vn.py orders are
+translated into FIX 4.2 messages and transmitted through the QuickFIX C++ session
+and socket layers to the ordermatch server.
+
+```mermaid
+flowchart LR
+    UI["vn.py GUI<br/>manual trading + AC-RL parent orders"]
+    AC["AC inventory planner<br/>cumulative execution schedule"]
+    TS["Tranche scheduler<br/>20 lots per agent"]
+    RL["Concurrent PPO agents<br/>67 features to 7 allocations"]
+    CO["Central coordinator<br/>reconciliation + risk controls"]
+    GW["vn.py QuickFIX Gateway<br/>object/FIX mapping"]
+    QF["Optimized QuickFIX C++<br/>session + socket engine"]
+    OM["FIX ordermatch server"]
+
+    UI --> AC --> TS --> RL --> CO --> GW --> QF --> OM
+    OM -- "ExecutionReport / MarketData" --> QF
+    QF --> GW --> CO
+    GW --> UI
+```
+
+### Technical highlights
+
+- **QuickFIX C++ optimization:** adds SSE2 16-byte stream scanning, specialized
+  fixed-layout parsing for high-frequency order/cancel/market-data templates,
+  and switchable Busy-Poll/Direct Socket paths. In a local 200,000-message
+  NewOrderSingle benchmark, Busy-Poll increased throughput from 136,046 to
+  175,173 messages/s (+28.8%) and reduced voluntary context switches by 99.4%.
+- **RL tactical execution:** trains a PPO Actor-Critic policy for a 20-lot,
+  150-simulation-unit task using 200,000 decision samples. The deployed policy
+  maps a locked 67-dimensional order-book/order-flow state to seven inventory
+  allocation targets; in 200 paired simulations it achieved a +1.3715 mean
+  reward advantage and a 97.5% win rate against Market-TWAP.
+- **AC-RL multi-agent framework:** converts an arbitrary parent order in multiples
+  of 20 lots into deadline-aware RL tranches. For example, a 260-lot/120-second
+  schedule creates 13 agents with a required peak concurrency of four, while the
+  coordinator handles asynchronous fills, cancel races, overfill prevention,
+  pause/resume/cancel operations, and deadline completion.
+- **Full trading path:** preserves vn.py's manual order, cancellation, and market
+  subscription functions while adding an AC-RL GUI. Both manual and algorithmic
+  orders pass through the same `MainEngine -> QuickfixGateway -> QuickFIX C++`
+  path, with ExecutionReport and market-data callbacks returned to vn.py.
+
+This repository is a research and systems-integration prototype. The bundled
+ordermatch market data is deterministic test data, and the RL results above are
+simulation results rather than evidence of live-trading performance. Generated
+binaries, FIX session state, logs, credentials, and training caches are
+intentionally excluded from the snapshot.
 
 ## Repository layout
 
