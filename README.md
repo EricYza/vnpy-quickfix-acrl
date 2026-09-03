@@ -66,6 +66,8 @@ intentionally excluded from the snapshot.
 
 ## Demo
 
+![vn.py AC-RL execution interface showing the parent order, 20-lot RL tranches, and execution activity](./image.png)
+
 [Watch the order execution demo (MP4, 3:01, 8.6 MiB)](./Order_Execution_Demo_web.mp4)
 
 ## Repository layout
