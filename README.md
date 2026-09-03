@@ -64,6 +64,10 @@ simulation results rather than evidence of live-trading performance. Generated
 binaries, FIX session state, logs, credentials, and training caches are
 intentionally excluded from the snapshot.
 
+## Demo
+
+[Watch the order execution demo (MP4, 3:01, 8.6 MiB)](./Order_Execution_Demo_web.mp4)
+
 ## Repository layout
 
 ```text

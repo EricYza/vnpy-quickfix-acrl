@@ -51,3 +51,5 @@ rlte/raw_rewards/
 **/*.pfx
 .vscode/
 
+# Keep the source-quality recording local; commit the compressed web copy only.
+Order_Execution_Demo.mp4
